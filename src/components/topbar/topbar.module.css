@@ -1,0 +1,64 @@
+* {
+  box-sizing: border-box;
+}
+
+.topbar {
+  width: 100%;
+  background-color: white;
+  height: 4rem;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+.topLeft,
+.topRight {
+  flex: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.topCenter {
+  flex: 6;
+}
+
+.topIcon {
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: #444;
+  margin-right: 1rem;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+}
+
+.topList {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.topListItem {
+  margin-right: 1rem;
+  font-size: 1rem;
+  font-weight: 300;
+  cursor: pointer;
+}
+
+.searchIcon {
+  font-size: 1rem;
+  color: #666;
+  cursor: pointer;
+  margin-left: 1rem;
+}
+.topImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
