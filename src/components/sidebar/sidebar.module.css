@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+}
+
+.sidebar {
+  flex: 1;
+  margin: 1rem;
+  padding-bottom: 2rem;
+  background-color: #fdfbfb;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebarItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebarTitle {
+  margin: 0.5rem;
+  padding: 0.25rem;
+  width: 85%;
+  border-top: 1px solid #a7a4a4;
+  border-bottom: 1px solid #a7a4a4;
+  font-family: "Varela Round", sans-serif;
+  font-size: 0.8rem;
+  color: #222;
+  font-weight: 600;
+  line-height: 1rem;
+  text-align: center;
+}
+
+.sidebarImg {
+  margin-top: 1rem;
+  width: 200px;
+  height: 150px;
+}
+
+.contentText {
+  padding: 1rem;
+}
+
+.sidebarList {
+  list-style: none;
+  margin: 1rem 0;
+}
+
+.sidebarListItem {
+  display: inline-block;
+  padding: 0.4rem;
+  width: 50%;
+  cursor: pointer;
+}
+
+.sidebarSocial {
+  margin-top: 1rem;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebarSocial > i {
+  font-size: 1rem;
+  margin-left: 0.7rem;
+  cursor: pointer;
+}
