@@ -1,4 +1,9 @@
 
 .posts{
+    width: 100%;
     flex: 3;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin: 1rem;
 }
