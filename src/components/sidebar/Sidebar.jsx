@@ -13,7 +13,7 @@ const Sidebar = () => {
         />
         <p className={styles.contentText}>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia
-          perferendis cupiditate earum recusandae adipisci dolores repudiandae
+          perferendis cupiditate earum recusandae.
         </p>
       </div>
 
