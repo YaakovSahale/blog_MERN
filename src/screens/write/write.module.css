@@ -1,0 +1,62 @@
+.writeWrapper {
+  padding-top: 3rem;
+}
+
+.img {
+  margin-left: 9rem;
+  width: 70vw;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.form {
+  position: relative;
+}
+
+.formGroup {
+  margin-left: 9rem;
+  display: flex;
+  align-items: center;
+}
+
+.formGroup > textarea {
+  font-size: 1.2rem;
+}
+
+.iconWarper > i {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: gray;
+  cursor: pointer;
+}
+
+.input {
+  font-size: 1.8rem;
+  border: none;
+  padding: 1.2rem;
+  width: 70vw;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.submitBtn {
+  position: absolute;
+  top: 1.2rem;
+  right: 3rem;
+  color: white;
+  background-color: teal;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}

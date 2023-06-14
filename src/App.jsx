@@ -2,13 +2,14 @@
 
 import Topbar from "./components/topbar/topbar";
 // import Home from "./screens/Home/Home";
-import Single from "./screens/single/Single";
+// import Single from "./screens/single/Single";
+import Write from "./screens/write/Write";
 
 function App() {
   return (
     <div>
       <Topbar />
-      <Single />
+      <Write />
     </div>
   );
 }
