@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import styles from "./register.module.css";
 
 const Register = () => {
@@ -10,10 +11,12 @@ const Register = () => {
         <label>Email</label>
         <input type="text" placeholder="Enter your email" />
         <label>Password</label>
-        <input type="Password" placeholder="Enter your password"/>
+        <input type="Password" placeholder="Enter your password" />
         <button className={styles.registerBtn}>Register</button>
       </form>
-      <button className={styles.loginBtn}>login</button>
+      <button className={styles.loginBtn}>
+        <NavLink className="link" to="/login">Login</NavLink>
+      </button>
     </div>
   );
 };

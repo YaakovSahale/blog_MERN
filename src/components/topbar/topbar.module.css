@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+li {
+  text-decoration: none;
+  list-style: none;
+}
+
 .topbar {
   width: 100%;
   background-color: white;
@@ -45,6 +50,7 @@
 }
 
 .topListItem {
+  text-decoration: none;
   margin-right: 1rem;
   font-size: 1rem;
   font-weight: 400;

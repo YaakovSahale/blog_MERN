@@ -1,6 +1,8 @@
+import { NavLink } from "react-router-dom";
 import styles from "./topbar.module.css";
 
 const Topbar = () => {
+  const user = false;
   return (
     <div className={styles.topbar}>
       <div className={styles.topLeft}>
@@ -13,19 +15,43 @@ const Topbar = () => {
       </div>
       <div className={styles.topCenter}>
         <ul className={styles.topList}>
-          <li className={styles.topListItem}>HOME</li>
-          <li className={styles.topListItem}>ABOUT</li>
-          <li className={styles.topListItem}>CONTACT</li>
-          <li className={styles.topListItem}>WRITE</li>
-          <li className={styles.topListItem}>LOGOUT</li>
+          <NavLink className={styles.topListItem} to="/">
+            <li>HOME</li>
+          </NavLink>
+          <NavLink className={styles.topListItem} to="/about">
+            <li>ABOUT</li>
+          </NavLink>
+          <NavLink className={styles.topListItem} to="/contact">
+            <li>CONTACT</li>
+          </NavLink>
+          <NavLink className={styles.topListItem} to="/write">
+            <li>WRITE</li>
+          </NavLink>
+          <li>{user && "LOGOUT"}</li>
         </ul>
       </div>
       <div className={styles.topRight}>
-        <img
-          className={styles.topImg}
-          src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-          alt=""
-        />
+        {user ? (
+          <img
+            className={styles.topImg}
+            src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
+            alt=""
+          />
+        ) : (
+          <ul className={styles.topList}>
+            <li>
+              <NavLink to="/login" className={styles.topListItem}>
+                LOGIN
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/register" className={styles.topListItem}>
+                REGISTER
+              </NavLink>
+            </li>
+          </ul>
+        )}
+
         <span className={styles.searchIcon}>
           <i className="fa-solid fa-magnifying-glass"></i>
         </span>
