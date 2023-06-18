@@ -1,13 +1,15 @@
 // import styles from "./App.module.css";
 
 import Topbar from "./components/topbar/topbar";
-import Settings from "./screens/setting/Settings";
+import Login from "./screens/login/Login";
+import Register from "./screens/register/Register";
 
 function App() {
   return (
     <div>
       <Topbar />
-      <Settings />
+      {/* <Login/> */}
+      <Register/>
     </div>
   );
 }
