@@ -8,6 +8,7 @@ const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 const multer = require("multer");
 const cors = require("cors");
+const PORT = '5000'
 
 dotenv.config();
 app.use(cors());
@@ -37,6 +38,6 @@ app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
 
-app.listen("5000", () => {
-  console.log("server is running on port 5000");
+app.listen(PORT, () => {
+  console.log(`server is running on port ${PORT}`);
 });
