@@ -1,6 +1,6 @@
 import Header from "../../components/header/Header";
 import Sidebar from "../../components/sidebar/Sidebar";
-import Posts from "../../components/posts/posts";
+import Posts from "../../components/posts/Posts";
 import styles from "./home.module.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
