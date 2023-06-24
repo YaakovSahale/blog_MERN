@@ -1,6 +1,6 @@
 import styles from "./post.module.css";
 
-const Post = () => {
+const Post = ({ post }) => {
   return (
     <div className={styles.post}>
       <img
@@ -11,27 +11,21 @@ const Post = () => {
 
       <div className={styles.postInfo}>
         <div className={styles.postCats}>
-          <span className={styles.postCat}>Music</span>
-          <span className={styles.postCat}>Life</span>
+          {post.categories?.map((cat, i) => (
+            <span className={styles.postCat} key={i}>
+              {cat}
+            </span>
+          ))}
         </div>
 
-        <span className={styles.postTitle}>Lorem ipsum dolor sit amet </span>
+        <span className={styles.postTitle}>{post.title} </span>
         <hr />
-        <span className={styles.postData}>1 hour ago</span>
+        <span className={styles.postData}>
+          {new Date(post.createdAt).toDateString()}
+        </span>
       </div>
 
-      <p className={styles.postDesc}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-        eligendi in quam distinctio nam voluptate omnis maiores exercitationem
-        error assumenda pariatur vitae ex velit voluptas, fuga reprehenderit
-        fugit quod aut! Lorem ipsum dolor sit amet consectetur adipisicing elit.
-        Quibusdam eligendi in quam distinctio nam voluptate omnis maiores
-        exercitationem error assumenda pariatur vitae ex velit voluptas, fuga
-        reprehenderit fugit quod aut! Lorem ipsum dolor sit amet consectetur
-        adipisicing elit. Quibusdam eligendi in quam distinctio nam voluptate
-        omnis maiores exercitationem error assumenda pariatur vitae ex velit
-        voluptas, fuga reprehenderit fugit quod aut!
-      </p>
+      <p className={styles.postDesc}>{post.desc}</p>
     </div>
   );
 };
