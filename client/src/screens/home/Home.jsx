@@ -10,18 +10,18 @@ const Home = () => {
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const {data} = await axios.get("http://localhost:5000/api/posts");
+      const { data } = await axios.get("http://localhost:5000/api/posts");
+      setPosts(data);
       console.log(data);
     };
     fetchPosts();
   }, []);
 
-  
   return (
     <>
       <Header />
       <div className={styles.home}>
-        <Posts />
+        <Posts posts={posts} />
         <Sidebar />
       </div>
     </>
