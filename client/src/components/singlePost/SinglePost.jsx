@@ -1,6 +1,11 @@
+import { useLocation } from "react-router-dom";
 import styles from "./singlePost.module.css";
+import { useState } from "react";
 
 const SinglePost = () => {
+  const location = useLocation();
+  const tempPost = location.state;
+  const [post, setPost] = useState(tempPost);
   return (
     <div className={styles.singlePost}>
       <div className={styles.singlePostWrapper}>
@@ -10,7 +15,7 @@ const SinglePost = () => {
           alt=""
         />
         <h1 className={styles.title}>
-          <p>Lorem ipsum, dolor sit amet consectetur</p>
+          <p>{post.title}</p>
           <div className={styles.editWrapper}>
             <i className="fa-regular fa-trash-can"></i>
             <i className="fa-regular fa-pen-to-square"></i>
@@ -18,26 +23,13 @@ const SinglePost = () => {
         </h1>
         <div className={styles.info}>
           <span className={styles.author}>
-            Author:<b>qwer</b>
+            Author:<b>{post.userName}</b>
           </span>
-          <span className={styles.date}>1 hour ago</span>
+          <span className={styles.date}>
+            {new Date(post.createdAt).toDateString()}
+          </span>
         </div>
-        <p className={styles.desc}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-          laboriosam ipsum debitis. Esse autem laboriosam quod velit?
-          Consequuntur tenetur quo rem dolore vitae repudiandae non labore
-          quisquam facilis! Vero, nobis! Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Voluptatem laboriosam ipsum debitis. Esse autem
-          laboriosam quod velit? Consequuntur tenetur quo rem dolore vitae
-          repudiandae non labore quisquam facilis! Vero, nobis! Lorem ipsum
-          dolor sit amet consectetur adipisicing elit. Voluptatem laboriosam
-          ipsum debitis. Esse autem laboriosam quod velit? Consequuntur tenetur
-          quo rem dolore vitae repudiandae non labore quisquam facilis! Vero,
-          nobis! Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          Voluptatem laboriosam ipsum debitis. Esse autem laboriosam quod velit?
-          Consequuntur tenetur quo rem dolore vitae repudiandae non labore
-          quisquam facilis! Vero, nobis!
-        </p>
+        <p className={styles.desc}>{post.desc}</p>
       </div>
     </div>
   );

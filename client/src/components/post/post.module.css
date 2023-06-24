@@ -37,6 +37,8 @@
   margin: 1rem 0;
   text-align: center;
   cursor: pointer;
+  text-decoration: none;
+  list-style: none;
 }
 
 .postData {

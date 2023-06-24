@@ -1,4 +1,5 @@
 import styles from "./post.module.css";
+import { NavLink } from "react-router-dom";
 
 const Post = ({ post }) => {
   return (
@@ -17,8 +18,14 @@ const Post = ({ post }) => {
             </span>
           ))}
         </div>
+        <NavLink
+          className={styles.postTitle}
+          to={`/post/${post._id}`}
+          state={post}
+        >
+          <span className={styles.postTitle}>{post.title} </span>
+        </NavLink>
 
-        <span className={styles.postTitle}>{post.title} </span>
         <hr />
         <span className={styles.postData}>
           {new Date(post.createdAt).toDateString()}

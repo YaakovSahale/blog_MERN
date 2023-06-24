@@ -5,7 +5,7 @@ import Topbar from "./components/topbar/topbar";
 import Login from "./screens/login/Login";
 import Register from "./screens/register/Register";
 import Home from "./screens/home/Home";
-import SinglePost from "./components/singlePost/SinglePost";
+import Single from "./screens/single/Single";
 import Contact from "./screens/contact/Contact";
 import About from "./screens/about/About";
 import Write from "./screens/write/Write";
@@ -24,7 +24,7 @@ function App() {
         <Route path="/write" element={user ? <Write /> : <Home />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/settings" element={user ? <Home /> : <Settings />} />
-        <Route path="/post/:postId" element={<SinglePost />} />
+        <Route path="/post/:postId" element={<Single />} />
         <Route path="/login" element={user ? <Home /> : <Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
