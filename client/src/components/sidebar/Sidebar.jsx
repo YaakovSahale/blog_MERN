@@ -1,9 +1,21 @@
+import { useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
 import styles from "./sidebar.module.css";
+import axios from "axios";
 
 const Sidebar = () => {
+  const [categories, setCategories] = useState([]);
+  const API_URL = "http://localhost:5000/api";
+  useEffect(() => {
+    const getCategories = async () => {
+      const { data } = await axios.get(`${API_URL}/categories`);
+      setCategories(data);
+    };
+    getCategories();
+  }, []);
+
   return (
     <div className={styles.sidebar}>
-
       <div className={styles.sidebarItem}>
         <p className={styles.sidebarTitle}>ABOUT ME</p>
         <img
@@ -20,12 +32,11 @@ const Sidebar = () => {
       <div className={styles.sidebarItem}>
         <p className={styles.sidebarTitle}>CATEGORIES</p>
         <ul className={styles.sidebarList}>
-          <li className={styles.sidebarListItem}>Life</li>
-          <li className={styles.sidebarListItem}>Music</li>
-          <li className={styles.sidebarListItem}>Style</li>
-          <li className={styles.sidebarListItem}>Sport</li>
-          <li className={styles.sidebarListItem}>Tech</li>
-          <li className={styles.sidebarListItem}>Cinema</li>
+          {categories.map((c) => (
+            <NavLink key={c._id} to={`/?cat=${c.name}`} className="link">
+              <li className={styles.sidebarListItem}>{c.name}</li>
+            </NavLink>
+          ))}
         </ul>
       </div>
 

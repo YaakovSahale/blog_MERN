@@ -7,12 +7,12 @@ import axios from "axios";
 
 const Home = () => {
   const [posts, setPosts] = useState([]);
+  const API_URL = "http://localhost:5000/api"
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const { data } = await axios.get("http://localhost:5000/api/posts");
+      const { data } = await axios.get(`${API_URL}/posts`);
       setPosts(data);
-      console.log(data);
     };
     fetchPosts();
   }, []);

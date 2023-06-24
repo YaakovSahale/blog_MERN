@@ -15,19 +15,19 @@ const Topbar = () => {
       </div>
       <div className={styles.topCenter}>
         <ul className={styles.topList}>
-          <NavLink className={styles.topListItem} to="/">
-            <li>HOME</li>
+          <NavLink className="link" to="/">
+            <li className={styles.topListItem}>HOME</li>
           </NavLink>
-          <NavLink className={styles.topListItem} to="/about">
-            <li>ABOUT</li>
+          <NavLink className="link" to="/about">
+            <li className={styles.topListItem}>ABOUT</li>
           </NavLink>
-          <NavLink className={styles.topListItem} to="/contact">
-            <li>CONTACT</li>
+          <NavLink className="link" to="/contact">
+            <li className={styles.topListItem}>CONTACT</li>
           </NavLink>
-          <NavLink className={styles.topListItem} to="/write">
-            <li>WRITE</li>
+          <NavLink className="link" to="/write">
+            <li className={styles.topListItem}>WRITE</li>
           </NavLink>
-          <li>{user && "LOGOUT"}</li>
+          <li className="link">{user && "LOGOUT"}</li>
         </ul>
       </div>
       <div className={styles.topRight}>
