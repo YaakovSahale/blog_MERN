@@ -5,18 +5,20 @@ const bcrypt = require("bcrypt");
 //REGISTER
 router.post("/register", async (req, res) => {
   try {
+    const { userName, email, password } = req.body.userInfo;
     const salt = await bcrypt.genSalt(10);
-    const hashedPass = await bcrypt.hash(req.body.password, salt);
+    const hashedPass = await bcrypt.hash(password, salt);
 
     const newUser = new User({
-      userName: req.body.userName,
-      email: req.body.email,
+      userName,
+      email,
       password: hashedPass,
     });
 
     const user = await newUser.save();
 
     res.status(200).json(user);
+    console.log("user successfully added");
   } catch (err) {
     res.status(500).json(err);
     console.log(err);

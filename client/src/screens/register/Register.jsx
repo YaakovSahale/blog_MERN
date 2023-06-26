@@ -1,22 +1,85 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axios from "axios";
 import styles from "./register.module.css";
 
 const Register = () => {
+  const API_URL = "http://localhost:5000/api";
+  const navigate = useNavigate();
+  const [userInfo, setUserInfo] = useState({
+    userName: "",
+    email: "",
+    password: "",
+  });
+
+  const [error, setError] = useState(false);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError(false);
+    try {
+      const { data } = await axios.post(`${API_URL}/auth/register`, {
+        userInfo,
+      });
+      console.log(data);
+      data && navigate("/");
+    } catch (err) {
+      setError(true);
+    }
+  };
+
+  const handleOnChange = (event) => {
+    const { name, value } = event.target;
+
+    setUserInfo((prevState) => {
+      return {
+        ...prevState,
+        [name]: value,
+      };
+    });
+  };
+
   return (
     <div className={styles.registerWarper}>
       <span className={styles.title}>Register</span>
-      <form className={styles.form}>
+
+      <form className={styles.form} onSubmit={handleSubmit}>
         <label>User Name</label>
-        <input type="text" placeholder="Enter your user name" />
+        <input
+          name="userName"
+          type="text"
+          placeholder="Enter your user name"
+          autoComplete="on"
+          onChange={handleOnChange}
+        />
         <label>Email</label>
-        <input type="text" placeholder="Enter your email" />
+        <input
+          name="email"
+          type="text"
+          placeholder="Enter your email"
+          autoComplete="on"
+          onChange={handleOnChange}
+        />
         <label>Password</label>
-        <input type="Password" placeholder="Enter your password" />
+        <input
+          name="password"
+          type="password"
+          placeholder="Enter your password"
+          autoComplete="current-password"
+          onChange={handleOnChange}
+        />
         <button className={styles.registerBtn}>Register</button>
       </form>
       <button className={styles.loginBtn}>
-        <NavLink className="link" to="/login">Login</NavLink>
+        <NavLink className="link" to="/login">
+          Login
+        </NavLink>
       </button>
+      {
+        <div style={{ color: "red", paddingTop: "1rem" }}>
+          {error ? "something went wrong!" : ""}
+        </div>
+      }
     </div>
   );
 };
