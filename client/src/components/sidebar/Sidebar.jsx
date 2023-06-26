@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import styles from "./sidebar.module.css";
 import axios from "axios";
 
@@ -32,10 +32,10 @@ const Sidebar = () => {
       <div className={styles.sidebarItem}>
         <p className={styles.sidebarTitle}>CATEGORIES</p>
         <ul className={styles.sidebarList}>
-          {categories.map((c) => (
-            <NavLink key={c._id} to={`/?cat=${c.name}`} className="link">
-              <li className={styles.sidebarListItem}>{c.name}</li>
-            </NavLink>
+          {categories.map((cat) => (
+            <Link key={cat._id} to={`/?category=${cat.name}`} className="link">
+              <li className={styles.sidebarListItem}>{cat.name}</li>
+            </Link>
           ))}
         </ul>
       </div>

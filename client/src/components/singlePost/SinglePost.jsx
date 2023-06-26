@@ -1,11 +1,11 @@
-import { useLocation } from "react-router-dom";
+import { useLocation,Link } from "react-router-dom";
 import styles from "./singlePost.module.css";
 import { useState } from "react";
 
 const SinglePost = () => {
-  const location = useLocation();
-  const tempPost = location.state;
+  const {state:tempPost} = useLocation();
   const [post, setPost] = useState(tempPost);
+
   return (
     <div className={styles.singlePost}>
       <div className={styles.singlePostWrapper}>
@@ -23,7 +23,10 @@ const SinglePost = () => {
         </h1>
         <div className={styles.info}>
           <span className={styles.author}>
-            Author:<b>{post.userName}</b>
+            Author:
+            <Link className="link" to={`/?userName=${post.userName}`}>
+            <b>{post.userName}</b>
+            </Link>
           </span>
           <span className={styles.date}>
             {new Date(post.createdAt).toDateString()}
