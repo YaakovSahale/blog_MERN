@@ -10,6 +10,7 @@ import Contact from "./screens/contact/Contact";
 import About from "./screens/about/About";
 import Write from "./screens/write/Write";
 import Settings from "./screens/setting/Settings";
+import ErrorPage from "./screens/errorPage/ErrorPage";
 
 function App() {
   const user = false;
@@ -27,7 +28,9 @@ function App() {
         <Route path="/post/:postId" element={<Single />} />
         <Route path="/login" element={user ? <Home /> : <Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="*" element={<ErrorPage/>} />
       </Routes>
+      
     </div>
   );
 }
