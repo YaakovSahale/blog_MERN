@@ -1,6 +1,6 @@
 import { useLocation,Link } from "react-router-dom";
-import styles from "./singlePost.module.css";
 import { useState } from "react";
+import styles from "./singlePost.module.css";
 
 const SinglePost = () => {
   const {state:tempPost} = useLocation();
