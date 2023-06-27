@@ -1,5 +1,3 @@
-// import styles from "./App.module.css";
-
 import { Route, Routes } from "react-router-dom";
 import Topbar from "./components/topbar/topbar";
 import Login from "./screens/login/Login";
@@ -11,10 +9,13 @@ import About from "./screens/about/About";
 import Write from "./screens/write/Write";
 import Settings from "./screens/setting/Settings";
 import ErrorPage from "./screens/errorPage/ErrorPage";
+import { useContext } from "react";
+import { Context } from "./context/Context";
 
 function App() {
-  const user = false;
-  // const user = true;
+  const { user } = useContext(Context);
+  // const user = false
+  // const user = true
   return (
     <div>
       <Topbar />
@@ -22,15 +23,14 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/write" element={user ? <Write /> : <Home />} />
+        <Route path="/write" element={<Write />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/settings" element={user ? <Home /> : <Settings />} />
         <Route path="/post/:postId" element={<Single />} />
         <Route path="/login" element={user ? <Home /> : <Login />} />
         <Route path="/register" element={<Register />} />
-        <Route path="*" element={<ErrorPage/>} />
+        <Route path="*" element={<ErrorPage />} />
       </Routes>
-      
     </div>
   );
 }

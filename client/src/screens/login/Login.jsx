@@ -19,11 +19,11 @@ const Login = () => {
         password: passwordRef.current.value,
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: data });
+      console.log("user successfully logged in");
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
     }
   };
-  console.log(user);
   return (
     <div className={styles.loginWarper}>
       <span className={styles.title}>Login</span>
@@ -36,7 +36,7 @@ const Login = () => {
           placeholder="Enter your password"
           ref={passwordRef}
         />
-        <button className={styles.loginBtn} type="submit">
+        <button className={styles.loginBtn} type="submit" disabled={isFetching}>
           Login
         </button>
       </form>

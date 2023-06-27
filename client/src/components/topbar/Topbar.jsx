@@ -1,8 +1,10 @@
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../../context/Context";
 import styles from "./topbar.module.css";
 
 const Topbar = () => {
-  const user = false;
+  const { user } = useContext(Context);
   return (
     <div className={styles.topbar}>
       <div className={styles.topLeft}>
@@ -24,9 +26,13 @@ const Topbar = () => {
           <NavLink className="link" to="/contact">
             <li className={styles.topListItem}>CONTACT</li>
           </NavLink>
-          <NavLink className="link" to="/write">
-            <li className={styles.topListItem}>WRITE</li>
-          </NavLink>
+
+          {user && (
+            <NavLink className="link" to="/write">
+              <li className={styles.topListItem}>WRITE</li>
+            </NavLink>
+          )}
+
           <li className="link">{user && "LOGOUT"}</li>
         </ul>
       </div>
