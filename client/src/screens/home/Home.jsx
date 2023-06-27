@@ -11,7 +11,6 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
   const { search } = useLocation();
   const API_URL = "http://localhost:5000/api";
-  // console.log(useLocation());
 
   useEffect(() => {
     const fetchPosts = async () => {

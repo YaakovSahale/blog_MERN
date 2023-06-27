@@ -4,7 +4,12 @@ import { Context } from "../../context/Context";
 import styles from "./topbar.module.css";
 
 const Topbar = () => {
-  const { user } = useContext(Context);
+  const { user, dispatch } = useContext(Context);
+
+  const handleLogout = () => {
+    dispatch({ type: "LOGOUT" });
+  };
+
   return (
     <div className={styles.topbar}>
       <div className={styles.topLeft}>
@@ -33,7 +38,9 @@ const Topbar = () => {
             </NavLink>
           )}
 
-          <li className="link">{user && "LOGOUT"}</li>
+          <li className={styles.logout} onClick={handleLogout}>
+            {user && "LOGOUT"}
+          </li>
         </ul>
       </div>
       <div className={styles.topRight}>

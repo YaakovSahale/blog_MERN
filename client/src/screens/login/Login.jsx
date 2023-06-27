@@ -29,7 +29,12 @@ const Login = () => {
       <span className={styles.title}>Login</span>
       <form className={styles.form} onSubmit={handleSubmit}>
         <label>UserName</label>
-        <input type="text" placeholder="Enter your UserName" ref={userRef} />
+        <input
+          type="text"
+          placeholder="Enter your UserName"
+          ref={userRef}
+          autoFocus={true}
+        />
         <label>Password</label>
         <input
           type="Password"
