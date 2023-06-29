@@ -1,31 +1,38 @@
-import { useLocation,Link } from "react-router-dom";
-import { useState } from "react";
+import { useLocation, Link } from "react-router-dom";
+import { useContext, useState } from "react";
 import styles from "./singlePost.module.css";
+import { Context } from "../../context/Context";
 
 const SinglePost = () => {
-  const {state:tempPost} = useLocation();
+  const { user } = useContext(Context);
+  const { state: tempPost } = useLocation();
   const [post, setPost] = useState(tempPost);
+  const IMAGES_URL = "http://localhost:5000/images";
 
   return (
     <div className={styles.singlePost}>
       <div className={styles.singlePostWrapper}>
-        <img
-          className={styles.singlePostImg}
-          src="https://cdn.pixabay.com/photo/2023/06/07/13/02/butterfly-8047187_1280.jpg"
-          alt=""
-        />
+        {post.photo && (
+          <img
+            className={styles.singlePostImg}
+            src={`${IMAGES_URL}/${post.photo}`}
+            alt=""
+          />
+        )}
         <h1 className={styles.title}>
           <p>{post.title}</p>
-          <div className={styles.editWrapper}>
-            <i className="fa-regular fa-trash-can"></i>
-            <i className="fa-regular fa-pen-to-square"></i>
-          </div>
+          {post.userName === user.userName && (
+            <div className={styles.editWrapper}>
+              <i className="fa-regular fa-trash-can"></i>
+              <i className="fa-regular fa-pen-to-square"></i>
+            </div>
+          )}
         </h1>
         <div className={styles.info}>
           <span className={styles.author}>
             Author:
             <Link className="link" to={`/?userName=${post.userName}`}>
-            <b>{post.userName}</b>
+              <b>{post.userName}</b>
             </Link>
           </span>
           <span className={styles.date}>

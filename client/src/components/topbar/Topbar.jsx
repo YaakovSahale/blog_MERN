@@ -1,13 +1,15 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
 import styles from "./topbar.module.css";
 
 const Topbar = () => {
   const { user, dispatch } = useContext(Context);
+  const navigate = useNavigate();
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
+    navigate("/");
   };
 
   return (
