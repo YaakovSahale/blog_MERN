@@ -2,11 +2,12 @@ import styles from "./post.module.css";
 import { Link, NavLink } from "react-router-dom";
 
 const Post = ({ post }) => {
+  const IMAGES_URL = "http://localhost:5000/images";
   return (
     <div className={styles.post}>
       <img
         className={styles.postImg}
-        src="https://cdn.pixabay.com/photo/2023/03/23/14/29/bird-7872096_1280.jpg"
+        src={`${IMAGES_URL}/${post.photo}`}
         alt=""
       />
 

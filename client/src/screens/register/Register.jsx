@@ -18,11 +18,12 @@ const Register = () => {
     e.preventDefault();
     setError(false);
     try {
-      const { data } = await axios.post(`${API_URL}/auth/register`, {
+      await axios.post(`${API_URL}/auth/register`, {
         userInfo,
       });
-      console.log(data);
-      data && navigate("/");
+      console.log("user successfully registered");
+
+      data && navigate("/login");
     } catch (err) {
       setError(true);
     }
@@ -68,7 +69,9 @@ const Register = () => {
           autoComplete="current-password"
           onChange={handleOnChange}
         />
-        <button className={styles.registerBtn}>Register</button>
+        <button className={styles.registerBtn} type="submit">
+          Register
+        </button>
       </form>
       <button className={styles.loginBtn}>
         <NavLink className="link" to="/login">
