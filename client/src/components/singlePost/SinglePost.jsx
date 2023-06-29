@@ -1,4 +1,4 @@
-import { useLocation, Link } from "react-router-dom";
+import { useLocation, Link, useNavigate } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import styles from "./singlePost.module.css";
 import { Context } from "../../context/Context";
@@ -6,20 +6,39 @@ import axios from "axios";
 
 const SinglePost = () => {
   const { user } = useContext(Context);
+  const navigate = useNavigate();
   const [post, setPost] = useState({});
   const IMAGES_URL = "http://localhost:5000/images";
   const API_URL = "http://localhost:5000/api";
   const path = location.pathname.split("/")[2];
 
   useEffect(() => {
-    const getPost = async () => {
-      const { data } = await axios.get(`${API_URL}/posts/${path}`);
-      setPost(data);
-    };
-    getPost();
+    try {
+      const getPost = async () => {
+        const { data } = await axios.get(`${API_URL}/posts/${path}`);
+        setPost(data);
+      };
+      getPost();
+    } catch (err) {
+      console.log(err);
+    }
   }, []);
 
-  const deletePost = () => {};
+  //path in dependance?
+
+  const deletePost = async () => {
+    try {
+      const { data } = await axios.delete(`${API_URL}/posts/${path}`, {
+        data: {
+          userName: user.userName,
+        },
+      });
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+    navigate("/");
+  };
 
   return (
     <div className={styles.singlePost}>

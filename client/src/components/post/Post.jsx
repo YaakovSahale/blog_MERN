@@ -21,10 +21,7 @@ const Post = ({ post }) => {
             </Link>
           ))}
         </div>
-        <Link
-          className={styles.postTitle}
-          to={`/post/${post._id}`}
-        >
+        <Link className={styles.postTitle} to={`/post/${post._id}`}>
           <span className={styles.postTitle}>{post.title} </span>
         </Link>
 
