@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 const Write = () => {
   const API_URL = "http://localhost:5000/api";
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
@@ -27,18 +27,15 @@ const Write = () => {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        const { data: massage } = await axios.post(`${API_URL}/upload`, data);
-        console.log(massage);
-        console.log(newPost);
+        await axios.post(`${API_URL}/upload`, data);
       } catch (err) {
         console.log(err);
       }
     }
 
     try {
-      const { data } = await axios.post(`${API_URL}/posts`, newPost);
-      console.log(data);
-      // navigate(`/post/${data._id}`);
+    const {data} =  await axios.post(`${API_URL}/posts`, newPost);
+      navigate(`/post/${data._id}`);
       // window.location.replace("/post/" + res.data._id);
     } catch (err) {
       console.log(err);

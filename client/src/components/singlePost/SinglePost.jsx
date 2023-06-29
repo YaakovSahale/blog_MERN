@@ -1,13 +1,25 @@
 import { useLocation, Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./singlePost.module.css";
 import { Context } from "../../context/Context";
+import axios from "axios";
 
 const SinglePost = () => {
   const { user } = useContext(Context);
-  const { state: tempPost } = useLocation();
-  const [post, setPost] = useState(tempPost);
+  const [post, setPost] = useState({});
   const IMAGES_URL = "http://localhost:5000/images";
+  const API_URL = "http://localhost:5000/api";
+  const path = location.pathname.split("/")[2];
+
+  useEffect(() => {
+    const getPost = async () => {
+      const { data } = await axios.get(`${API_URL}/posts/${path}`);
+      setPost(data);
+    };
+    getPost();
+  }, []);
+
+  const deletePost = () => {};
 
   return (
     <div className={styles.singlePost}>
@@ -21,9 +33,9 @@ const SinglePost = () => {
         )}
         <h1 className={styles.title}>
           <p>{post.title}</p>
-          {post.userName === user.userName && (
+          {post.userName === user?.userName && (
             <div className={styles.editWrapper}>
-              <i className="fa-regular fa-trash-can"></i>
+              <i className="fa-regular fa-trash-can" onClick={deletePost}></i>
               <i className="fa-regular fa-pen-to-square"></i>
             </div>
           )}

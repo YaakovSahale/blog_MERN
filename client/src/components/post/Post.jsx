@@ -24,7 +24,6 @@ const Post = ({ post }) => {
         <Link
           className={styles.postTitle}
           to={`/post/${post._id}`}
-          state={post}
         >
           <span className={styles.postTitle}>{post.title} </span>
         </Link>
