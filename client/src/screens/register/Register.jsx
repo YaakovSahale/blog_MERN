@@ -23,7 +23,7 @@ const Register = () => {
       });
       console.log("user successfully registered");
 
-      data && navigate("/login");
+      navigate("/login");
     } catch (err) {
       setError(true);
     }
@@ -51,6 +51,7 @@ const Register = () => {
           type="text"
           placeholder="Enter your user name"
           autoComplete="on"
+          autoFocus
           onChange={handleOnChange}
         />
         <label>Email</label>

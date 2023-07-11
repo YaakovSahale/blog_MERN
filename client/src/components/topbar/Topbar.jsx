@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../context/Context";
 import styles from "./topbar.module.css";
@@ -6,6 +6,9 @@ import styles from "./topbar.module.css";
 const Topbar = () => {
   const { user, dispatch } = useContext(Context);
   const navigate = useNavigate();
+
+  const IMAGES_URL = "http://localhost:5000/images/";
+  const defaultProfilePic = "defaultProfilePic.png";
 
   const handleLogout = () => {
     dispatch({ type: "LOGOUT" });
@@ -47,11 +50,16 @@ const Topbar = () => {
       </div>
       <div className={styles.topRight}>
         {user ? (
-          <img
-            className={styles.topImg}
-            src="https://images.pexels.com/photos/1858175/pexels-photo-1858175.jpeg?auto=compress&cs=tinysrgb&dpr=2&w=500"
-            alt=""
-          />
+          <Link to="/settings">
+            <img
+              className={styles.topImg}
+              src={
+                user.profilePic
+                  ? IMAGES_URL + user.profilePic
+                  : IMAGES_URL + defaultProfilePic
+              }
+            />
+          </Link>
         ) : (
           <ul className={styles.topList}>
             <li>

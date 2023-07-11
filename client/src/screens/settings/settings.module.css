@@ -70,7 +70,7 @@
   margin: 0.62rem 0;
   height: 1.87rem;
   border: none;
-  border-bottom: 1px solid lightcoral;
+  border-bottom: 1px solid lightgray;
 }
 
 .submitBtn {
@@ -83,4 +83,11 @@
   padding: 0.62rem;
   margin-top: 1.25rem;
   cursor: pointer;
+}
+
+.successMsg{
+  align-self: center;
+  margin-top: 1.5rem;
+  color: green;
+  
 }

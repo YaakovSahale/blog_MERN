@@ -12,7 +12,9 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     dispatch({ type: "LOGIN_START" });
+    
     try {
       const { data } = await axios.post(`${API_URL}/auth/login`, {
         userName: userRef.current.value,
@@ -23,7 +25,9 @@ const Login = () => {
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
     }
+
   };
+
   return (
     <div className={styles.loginWarper}>
       <span className={styles.title}>Login</span>

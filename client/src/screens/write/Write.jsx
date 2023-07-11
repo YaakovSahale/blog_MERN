@@ -5,12 +5,13 @@ import styles from "./write.module.css";
 import { useNavigate } from "react-router-dom";
 
 const Write = () => {
-  const API_URL = "http://localhost:5000/api";
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
   const { user } = useContext(Context);
+
+  const API_URL = "http://localhost:5000/api";
 
   const handleSubmit = async (e) => {
     e.preventDefault();
