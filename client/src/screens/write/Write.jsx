@@ -1,17 +1,33 @@
-import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Context } from "../../context/Context";
-import styles from "./write.module.css";
 import { useNavigate } from "react-router-dom";
+import Multiselect from "multiselect-react-dropdown";
+import axios from "axios";
+import styles from "./write.module.css";
 
 const Write = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState("");
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
+  const [categories, setCategories] = useState([]);
   const { user } = useContext(Context);
 
-  const API_URL = "http://localhost:5000/api";
+  const API_URL = "http://localhost:5000/api/";
+  const options = ["a 1", "b 2", "c 3"];
+
+  useEffect(() => {
+    const getCategories = async () => {
+      try {
+        const { data } =await axios.get(API_URL + "categories")
+        setCategories(data)
+        console.log(categories);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    getCategories()
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,7 +51,7 @@ const Write = () => {
     }
 
     try {
-    const {data} =  await axios.post(`${API_URL}/posts`, newPost);
+      const { data } = await axios.post(`${API_URL}/posts`, newPost);
       navigate(`/post/${data._id}`);
       // window.location.replace("/post/" + res.data._id);
     } catch (err) {
@@ -77,6 +93,22 @@ const Write = () => {
             className={styles.input}
           ></textarea>
         </div>
+
+        <div className={styles.formGroup}>
+          <Multiselect
+            displayValue="name"
+            // onSearch={function noRefCheck() {}}
+            onSelect={(e) => {
+              console.log(e);
+            }}
+            onRemove={(e) => {
+              console.log(e);
+            }}
+            options={categories}
+            showCheckbox
+          />
+        </div>
+
         <button className={styles.submitBtn} type="submit">
           Publish
         </button>
