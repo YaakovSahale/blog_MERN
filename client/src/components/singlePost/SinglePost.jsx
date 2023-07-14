@@ -5,9 +5,10 @@ import { Context } from "../../context/Context";
 import axios from "axios";
 
 const SinglePost = () => {
-  const { user } = useContext(Context);
-  const navigate = useNavigate();
   const [post, setPost] = useState({});
+  const { user } = useContext(Context);
+  
+  const navigate = useNavigate();
   const IMAGES_URL = "http://localhost:5000/images";
   const API_URL = "http://localhost:5000/api";
   const path = location.pathname.split("/")[2];

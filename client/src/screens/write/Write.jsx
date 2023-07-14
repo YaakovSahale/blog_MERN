@@ -11,6 +11,8 @@ const Write = () => {
   const [desc, setDesc] = useState("");
   const [file, setFile] = useState(null);
   const [categories, setCategories] = useState([]);
+  const [categoriesToAdd, setCategoriesToAdd] = useState([]);
+
   const { user } = useContext(Context);
 
   const API_URL = "http://localhost:5000/api/";
@@ -19,23 +21,26 @@ const Write = () => {
   useEffect(() => {
     const getCategories = async () => {
       try {
-        const { data } =await axios.get(API_URL + "categories")
-        setCategories(data)
-        console.log(categories);
+        const { data } = await axios.get(API_URL + "categories");
+        setCategories(data);
       } catch (err) {
         console.log(err);
       }
     };
-    getCategories()
+
+    getCategories();
   }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPost = {
       userName: user.userName,
+      categories: categoriesToAdd,
       title,
       desc,
     };
+
+    console.log(newPost);
 
     if (file) {
       const data = new FormData();
@@ -44,14 +49,15 @@ const Write = () => {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post(`${API_URL}/upload`, data);
+        await axios.post(API_URL + "upload", data);
       } catch (err) {
         console.log(err);
       }
     }
 
     try {
-      const { data } = await axios.post(`${API_URL}/posts`, newPost);
+      console.log(API_URL + "posts");
+      const { data } = await axios.post(API_URL + "posts", newPost);
       navigate(`/post/${data._id}`);
       // window.location.replace("/post/" + res.data._id);
     } catch (err) {
@@ -98,11 +104,20 @@ const Write = () => {
           <Multiselect
             displayValue="name"
             // onSearch={function noRefCheck() {}}
+
             onSelect={(e) => {
-              console.log(e);
+              const selectedCategories = e.map((cat) => cat.name);
+              console.log(selectedCategories);
+              setCategoriesToAdd(selectedCategories);
+              console.log(categoriesToAdd);
             }}
             onRemove={(e) => {
-              console.log(e);
+              const selectedCategories = e.map((cat) => cat.name);
+              console.log(selectedCategories);
+              setCategoriesToAdd((prevState) => {
+                return { ...prevState, selectedCategories };
+              });
+              console.log(categoriesToAdd);
             }}
             options={categories}
             showCheckbox

@@ -6,6 +6,7 @@ import axios from "axios";
 const Sidebar = () => {
   const [categories, setCategories] = useState([]);
   const API_URL = "http://localhost:5000/api";
+
   useEffect(() => {
     const getCategories = async () => {
       const { data } = await axios.get(`${API_URL}/categories`);
@@ -32,11 +33,13 @@ const Sidebar = () => {
       <div className={styles.sidebarItem}>
         <p className={styles.sidebarTitle}>CATEGORIES</p>
         <ul className={styles.sidebarList}>
+
           {categories.map((cat) => (
             <Link key={cat._id} to={`/?category=${cat.name}`} className="link">
               <li className={styles.sidebarListItem}>{cat.name}</li>
             </Link>
           ))}
+          
         </ul>
       </div>
 
