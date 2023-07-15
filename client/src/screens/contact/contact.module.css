@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.contactSection {
+  text-align: center;
+  width: 33%;
+  padding: 3rem;
+}
+
+.contactSection h1 {
+  margin-bottom: 1rem;
+}
+
+.contactSection:nth-child(1) {
+  background-color: gray;
+}
+
+.contactSection:nth-child(2) {
+    background-color:beige
+  }
+
+.iconRow{
+    display: flex;
+}
