@@ -1,11 +1,11 @@
 import styles from "./header.module.css";
 
-const Header = () => {
+const Header = ({ titleSmall, titleLarge }) => {
   return (
     <div className={styles.header}>
       <div className={styles.headerTitles}>
-        <span className={styles.headerTitleSm}>React & Node</span>
-        <span className={styles.headerTitleLg}>Blog</span>
+        <span className={styles.headerTitleSm}>{titleSmall}</span>
+        <span className={styles.headerTitleLg}>{titleLarge}</span>
       </div>
       <img
         className={styles.headerImg}

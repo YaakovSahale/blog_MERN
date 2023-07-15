@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <>
-      <Header />
+      <Header titleLarge={"Blog"} titleSmall={"React & Node"} />
 
       <div className={styles.home}>
         {isEmpty ? (

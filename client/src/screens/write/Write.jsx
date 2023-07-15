@@ -40,8 +40,6 @@ const Write = () => {
       desc,
     };
 
-    console.log(newPost);
-
     if (file) {
       const data = new FormData();
       const filename = Date.now() + file.name;
@@ -109,15 +107,13 @@ const Write = () => {
               const selectedCategories = e.map((cat) => cat.name);
               console.log(selectedCategories);
               setCategoriesToAdd(selectedCategories);
-              console.log(categoriesToAdd);
+              console.log(selectedCategories);
             }}
             onRemove={(e) => {
               const selectedCategories = e.map((cat) => cat.name);
               console.log(selectedCategories);
-              setCategoriesToAdd((prevState) => {
-                return { ...prevState, selectedCategories };
-              });
-              console.log(categoriesToAdd);
+              setCategoriesToAdd(selectedCategories);
+              console.log(selectedCategories);
             }}
             options={categories}
             showCheckbox
