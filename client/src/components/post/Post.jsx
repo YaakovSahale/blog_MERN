@@ -5,14 +5,18 @@ const Post = ({ post }) => {
   const IMAGES_URL = "http://localhost:5000/images/";
   const defaultArticlePic = "defaultArticlePic.png";
 
+  <span className={styles.postTitle}>{post.title}</span>;
+
   const postImg = (
-    <img
-      className={styles.postImg}
-      src={
-        post.photo ? IMAGES_URL + post.photo : IMAGES_URL + defaultArticlePic
-      }
-      alt=""
-    />
+    <Link to={`/post/${post._id}`}>
+      <img
+        className={styles.postImg}
+        src={
+          post.photo ? IMAGES_URL + post.photo : IMAGES_URL + defaultArticlePic
+        }
+        alt=""
+      />
+    </Link>
   );
 
   return (
@@ -27,9 +31,11 @@ const Post = ({ post }) => {
             </Link>
           ))}
         </div>
+
         <Link to={`/post/${post._id}`} className={styles.postTitle}>
           <span className={styles.postTitle}>{post.title}</span>
         </Link>
+
         <hr />
         <span className={styles.postData}>
           {new Date(post.createdAt).toDateString()}
