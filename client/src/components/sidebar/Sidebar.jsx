@@ -18,7 +18,7 @@ const Sidebar = () => {
   return (
     <div className={styles.sidebar}>
       <div className={styles.sidebarItem}>
-        <p className={styles.sidebarTitle}>ABOUT ME</p>
+        <p className={styles.sidebarTitle}>ARTICLE</p>
         <img
           className={styles.sidebarImg}
           src="https://cdn.pixabay.com/photo/2016/07/11/15/43/woman-1509956_1280.jpg"
@@ -33,13 +33,11 @@ const Sidebar = () => {
       <div className={styles.sidebarItem}>
         <p className={styles.sidebarTitle}>CATEGORIES</p>
         <ul className={styles.sidebarList}>
-
           {categories.map((cat) => (
             <Link key={cat._id} to={`/?category=${cat.name}`} className="link">
               <li className={styles.sidebarListItem}>{cat.name}</li>
             </Link>
           ))}
-          
         </ul>
       </div>
 
