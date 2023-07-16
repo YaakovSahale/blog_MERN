@@ -7,16 +7,17 @@ import Single from "./screens/single/Single";
 import Contact from "./screens/contact/Contact";
 import About from "./screens/about/About";
 import Write from "./screens/write/Write";
-import Settings from "./screens/settings/Settings";
-import ErrorPage from "./screens/errorPage/ErrorPage";
 import { useContext } from "react";
 import { Context } from "./context/Context";
+import Settings from "./screens/settings/Settings";
+import ErrorPage from "./screens/errorPage/ErrorPage";
+import styles from "./app.module.css";
 
 function App() {
   const { user } = useContext(Context);
 
   return (
-    <div>
+    <div className={styles.app}>
       <Topbar />
       <Routes>
         <Route path="/" element={<Home />} />

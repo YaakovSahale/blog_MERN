@@ -3,14 +3,21 @@ import { Link, NavLink } from "react-router-dom";
 
 const Post = ({ post }) => {
   const IMAGES_URL = "http://localhost:5000/images/";
+  const defaultArticlePic = "defaultArticlePic.png";
 
+  const postImg = (
+    <img
+      className={styles.postImg}
+      src={
+        post.photo ? IMAGES_URL + post.photo : IMAGES_URL + defaultArticlePic
+      }
+      alt=""
+    />
+  );
 
   return (
     <div className={styles.post}>
-
-      {post.photo && (
-        <img className={styles.postImg} src={IMAGES_URL + post.photo} alt="" />
-      )}
+      {postImg}
 
       <div className={styles.postInfo}>
         <div className={styles.postCats}>
