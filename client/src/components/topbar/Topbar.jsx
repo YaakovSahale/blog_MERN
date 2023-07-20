@@ -15,6 +15,34 @@ const Topbar = () => {
     navigate("/");
   };
 
+  const showUserSettingsImg = (
+    <Link to="/settings">
+      <img
+        className={styles.topImg}
+        src={
+          user.profilePic
+            ? IMAGES_URL + user.profilePic
+            : IMAGES_URL + defaultProfilePic
+        }
+      />
+    </Link>
+  );
+
+  const showLoginAndRegister = (
+    <ul className={styles.topList}>
+      <li>
+        <NavLink to="/login" className={styles.topListItem}>
+          LOGIN
+        </NavLink>
+      </li>
+      <li>
+        <NavLink to="/register" className={styles.topListItem}>
+          REGISTER
+        </NavLink>
+      </li>
+    </ul>
+  );
+
   return (
     <div className={styles.topbar}>
       <div className={styles.topLeft}>
@@ -49,31 +77,7 @@ const Topbar = () => {
         </ul>
       </div>
       <div className={styles.topRight}>
-        {user ? (
-          <Link to="/settings">
-            <img
-              className={styles.topImg}
-              src={
-                user.profilePic
-                  ? IMAGES_URL + user.profilePic
-                  : IMAGES_URL + defaultProfilePic
-              }
-            />
-          </Link>
-        ) : (
-          <ul className={styles.topList}>
-            <li>
-              <NavLink to="/login" className={styles.topListItem}>
-                LOGIN
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/register" className={styles.topListItem}>
-                REGISTER
-              </NavLink>
-            </li>
-          </ul>
-        )}
+        {user ? showUserSettingsImg : showLoginAndRegister}
 
         <span className={styles.searchIcon}>
           <i className="fa-solid fa-magnifying-glass"></i>

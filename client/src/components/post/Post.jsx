@@ -10,6 +10,7 @@ const Post = ({ post }) => {
   const postImg = (
     <Link to={`/post/${post._id}`}>
       <img
+
         className={styles.postImg}
         src={
           post.photo ? IMAGES_URL + post.photo : IMAGES_URL + defaultArticlePic
@@ -21,9 +22,11 @@ const Post = ({ post }) => {
 
   return (
     <div className={styles.post}>
+
       {postImg}
 
       <div className={styles.postInfo}>
+        
         <div className={styles.postCats}>
           {post.categories.map((cat, i) => (
             <Link className="link" to={`/?category=${cat}`} key={i}>
@@ -36,10 +39,12 @@ const Post = ({ post }) => {
           <span className={styles.postTitle}>{post.title}</span>
         </Link>
 
-        <hr />
-        <span className={styles.postData}>
+        {/* <hr /> */}
+
+        <span className={styles.postDate}>
           {new Date(post.createdAt).toDateString()}
         </span>
+        
       </div>
       <p className={styles.postDesc}>{post.desc}</p>
     </div>
@@ -47,3 +52,5 @@ const Post = ({ post }) => {
 };
 
 export default Post;
+
+
