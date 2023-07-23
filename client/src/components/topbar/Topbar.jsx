@@ -20,7 +20,7 @@ const Topbar = () => {
       <img
         className={styles.topImg}
         src={
-          user.profilePic
+          user?.profilePic
             ? IMAGES_URL + user.profilePic
             : IMAGES_URL + defaultProfilePic
         }
@@ -45,6 +45,7 @@ const Topbar = () => {
 
   return (
     <div className={styles.topbar}>
+
       <div className={styles.topLeft}>
         <span className={styles.topIcon}>
           <i className="fa-brands fa-pinterest"></i>
@@ -53,6 +54,7 @@ const Topbar = () => {
           <i className="fa-brands fa-square-instagram"></i>
         </span>
       </div>
+      
       <div className={styles.topCenter}>
         <ul className={styles.topList}>
           <NavLink className="link" to="/">
