@@ -12,6 +12,7 @@ import { Context } from "./context/Context";
 import Settings from "./screens/settings/Settings";
 import ErrorPage from "./screens/errorPage/ErrorPage";
 import styles from "./app.module.css";
+import AppRoutes from "./utils/AppRoutes";
 
 function App() {
   const { user } = useContext(Context);
@@ -19,18 +20,7 @@ function App() {
   return (
     <div className={styles.app}>
       <Topbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/write" element={<Write />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/settings" element={user ? <Settings /> : <Home />} />
-        <Route path="/post/:postId" element={<Single />} />
-        <Route path="/login" element={user ? <Home /> : <Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
+      <AppRoutes />
     </div>
   );
 }
