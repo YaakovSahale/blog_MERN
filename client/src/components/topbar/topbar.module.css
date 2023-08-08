@@ -8,6 +8,7 @@ li {
 }
 
 .topbar {
+  display: none;
   width: 100%;
   background-color: white;
   height: 4rem;
@@ -76,4 +77,18 @@ li {
 
 .logout {
   cursor: pointer;
+}
+
+/* Media query for screens 480px and above */
+@media (min-width: 777px) {
+  .topbar {
+    display: flex; /* Show at 480px and above */
+  }
+}
+
+/* Media query for screens below 480px */
+@media (max-width: 777px) {
+  .topbar {
+    display: none; /* Show below 480px */
+  }
 }

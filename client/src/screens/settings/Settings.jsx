@@ -6,10 +6,12 @@ import axios from "axios";
 
 const Settings = () => {
   const { user, dispatch } = useContext(Context);
+  
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [file, setFile] = useState(null);
+
   const [isSuccess, setIsSuccess] = useState(false);
 
   const API_URL = "http://localhost:5000/api";
