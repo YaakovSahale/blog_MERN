@@ -1,0 +1,13 @@
+
+.burgerIcon{
+    display: none;
+}
+
+
+
+
+@media (max-width: 777px) {
+    .burgerIcon {
+      display: block; /* Show below 480px */
+    }
+  }

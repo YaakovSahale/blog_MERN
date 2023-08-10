@@ -2,6 +2,8 @@
 import { useState } from "react";
 import { slide as Menu } from "react-burger-menu";
 import { FiMenu } from "react-icons/fi"; // You can choose a different icon from react-icons library
+import styles from "./burgerNav.module.css";
+
 
 const BurgerNav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,7 +18,7 @@ const BurgerNav = () => {
 
   return (
     <>
-      <div className="burger-icon">
+      <div className={styles.burgerIcon}>
         <FiMenu size={24} onClick={() => setIsOpen(!isOpen)} />
       </div>
       <Menu isOpen={isOpen} onStateChange={handleStateChange}>
