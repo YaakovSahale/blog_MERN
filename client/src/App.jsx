@@ -1,8 +1,7 @@
 import Topbar from "./components/topbar/Topbar";
 import AppRoutes from "./utils/AppRoutes";
-
-import styles from "./app.module.css";
 import BurgerNav from "./components/burgerNav/BurgerNav";
+import styles from "./app.module.css";
 
 
 function App() {
